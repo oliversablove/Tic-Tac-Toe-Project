@@ -4,7 +4,7 @@ const store = require('../store')
 
 const onSignUpSuccess = responseData => {
   console.log('Success', responseData)
-  $('#message').text('successfully created an account!')
+  $('#message').text('Successfully created an account!')
   $('#message').removeClass()
   $('#message').addClass('success')
 }
@@ -45,11 +45,25 @@ const onSignOutFailure = () => {
   $('#message').addClass('failure')
 }
 
+const onChangePasswordSuccess = () => {
+  $('#message').text('Password successfully changed!')
+  $('#message').removeClass()
+  $('#message').addClass('success')
+}
+
+const onChangePasswordFailure = () => {
+  $('#message').text('Error: could not change password.')
+  $('#message').removeClass()
+  $('#message').addClass('failure')
+}
+
 module.exports = {
   onSignUpFailure,
   onSignUpSuccess,
   onSignInFailure,
   onSignInSuccess,
   onSignOutFailure,
-  onSignOutSuccess
+  onSignOutSuccess,
+  onChangePasswordFailure,
+  onChangePasswordSuccess
 }

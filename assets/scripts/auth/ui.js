@@ -1,6 +1,6 @@
 'use strict'
 
-// const store = require('../store')
+const store = require('../store')
 
 const onSignUpSuccess = responseData => {
   console.log('Success', responseData)
@@ -16,7 +16,26 @@ const onSignUpFailure = responseData => {
   $('#message').addClass('failure')
 }
 
+const onSignInSuccess = responseData => {
+  console.log('success', responseData)
+  $('#message').text('Successfully signed in!')
+  $('#message').removeClass()
+  $('#message').addClass('success')
+
+  store.user = responseData.user
+  console.log('store is', store)
+}
+
+const onSignInFailure = responseData => {
+  console.log('failure', responseData)
+  $('#message').text('Error: failed to sign in.')
+  $('#message').removeClass()
+  $('#message').addClass('failure')
+}
+
 module.exports = {
   onSignUpFailure,
-  onSignUpSuccess
+  onSignUpSuccess,
+  onSignInFailure,
+  onSignInSuccess
 }

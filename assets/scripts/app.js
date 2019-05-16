@@ -17,4 +17,5 @@ $(() => {
   $('#change-pw').on('submit', authEvents.onChangePassword)
   // game
   $('#new-game').on('click', gamesEvents.onNewGame)
+  $('.box').on('click', gamesEvents.onBoxClick)
 })

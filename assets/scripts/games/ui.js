@@ -4,7 +4,7 @@ const store = require('../store.js')
 
 const onNewGameSuccess = data => {
   console.log('success', data)
-  store.game = data.game.id
+  store.game = data.game
   $('#message').text('New Game Started!')
   $('#message').removeClass()
   $('#message').addClass('success')

@@ -10,7 +10,7 @@ const onNewGameSuccess = (data) => {
   store.gameID = data.game.id
   store.cells = data.game.cells
   store.over = data.game.over
-  store.player = 'x'
+  store.player = 'X'
   $('#message').removeClass()
   $('#message').addClass('success')
   $('.box').text('')
@@ -30,11 +30,11 @@ const onUpdateGameSuccess = (playerTurn, cell) => {
   console.log(store)
   if (gameLogic.checkForWin(gameLogic.gameBoard)) {
 
-  } else if (store.player === 'x') {
-    store.player = 'o'
+  } else if (store.player === 'X') {
+    store.player = 'O'
     $('#message').text(`Player ${store.player}'s turn`)
   } else {
-    store.player = 'x'
+    store.player = 'X'
     $('#message').text(`Player ${store.player}'s turn`)
   }
 }

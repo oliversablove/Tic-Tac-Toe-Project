@@ -8,7 +8,6 @@
 
 const authEvents = require('./auth/events')
 const gamesEvents = require('./games/events')
-const gameLogic = require('./games/game-logic')
 
 $(() => {
   // user
@@ -18,6 +17,6 @@ $(() => {
   $('#change-pw').on('submit', authEvents.onChangePassword)
   // game
   $('#new-game').on('click', gamesEvents.onNewGame)
-  $('.box').on('click', gameLogic.onBoxClick)
-
+  $('.box').on('click', gamesEvents.onUpdateGame)
+  // game logic call onBoxClick from onUpdateGame
 })

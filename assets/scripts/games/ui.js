@@ -1,46 +1,51 @@
 'use strict'
 
 const store = require('../store.js')
+const gameLogic = require('./game-logic') // make sure this is correctly linked.
 
-const onNewGameSuccess = data => {
-  console.log('success', data)
-  store.game = data.game
-  // must update data.game in UPDATE section
+const onNewGameSuccess = (data) => {
+  console.log(data, store)
   $('#message').text('New Game Started!')
+  store.turn = 1
+  store.gameID = data.game.id
+  store.cells = data.game.cells
+  store.over = data.game.over
+  store.player = 'x'
   $('#message').removeClass()
   $('#message').addClass('success')
+  $('.box').text('')
+  $('#message').text(`Player ${store.player}'s turn'`)
 }
 
-const onNewGameFailure = responseData => {
-  console.log('failure', responseData)
+const onNewGameFailure = () => {
+  console.log('failure')
   $('#message').text('Error: Could not start game.')
   $('#message').removeClass()
   $('#message').addClass('failure')
 }
+const onUpdateGameSuccess = (playerTurn, cell) => {
+  $(cell).text(`${store.player}`)
+  gameLogic.gameBoard[store.id] = store.player
+  store.cells = gameLogic.gameBoard
+  console.log(store)
+  if (gameLogic.checkForWin(gameLogic.gameBoard)) {
 
-const onInvalidMove = () => {
-  console.log('Error: Capanese')
-  $('#message').text('Invalid Move')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
-  // $('#message').trigger('reset')
-  // setTimeout(() => $('#message').text(''), 2000)
+  } else if (store.player === 'x') {
+    store.player = 'o'
+    $('#message').text(`Player ${store.player}'s turn'`)
+  } else {
+    store.player = 'x'
+    $('#message').text(`Player ${store.player}'s turn'`)
+  }
 }
 
-const onPlayerOTurn = () => {
-  $('#message').text('Player O Turn')
-  // setTimeout(() => $('#message').text(''), 2000)
-}
-
-const onPlayerXTurn = () => {
-  $('#message').text('Player X Turn')
-  // setTimeout(() => $('#message').text(''), 2000)
+const onUpdateGameFailure = responseData => {
+  console.log('failure')
 }
 
 module.exports = {
   onNewGameFailure,
   onNewGameSuccess,
-  onInvalidMove,
-  onPlayerOTurn,
-  onPlayerXTurn
+  onUpdateGameFailure,
+  onUpdateGameSuccess
 }

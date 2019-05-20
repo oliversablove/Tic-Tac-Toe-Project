@@ -1,8 +1,33 @@
 'use strict'
 
-const getFormFields = require('../../../lib/get-form-fields')
-const ui = require('./ui')
+const store = require('../store.js')
 
+const gameBoard = ['', '', '', '', '', '', '', '', '']
+store.turn = 0
+
+const checkForWin = gameBoard => {
+  if ((gameBoard[0] && gameBoard[0] === gameBoard[1] && gameBoard[0] === gameBoard[2]) || // Has to also = 'x' or 'o'
+      (gameBoard[3] && gameBoard[3] === gameBoard[4] && gameBoard[3] === gameBoard[5]) ||
+      (gameBoard[6] && gameBoard[6] === gameBoard[7] && gameBoard[6] === gameBoard[8]) ||
+      (gameBoard[0] && gameBoard[0] === gameBoard[3] && gameBoard[0] === gameBoard[6]) ||
+      (gameBoard[1] && gameBoard[1] === gameBoard[4] && gameBoard[1] === gameBoard[7]) ||
+      (gameBoard[2] && gameBoard[2] === gameBoard[5] && gameBoard[2] === gameBoard[8]) ||
+      (gameBoard[0] && gameBoard[0] === gameBoard[4] && gameBoard[0] === gameBoard[8]) ||
+      (gameBoard[2] && gameBoard[2] === gameBoard[4] && gameBoard[2] === gameBoard[6])) {
+    store.over = true
+    console.log('Game is over')
+    $('#message').text(`Game Over: Player ${store.player} wins!`)
+    return true
+  } else if (store.turn === 9) {
+    store.over = true
+    console.log('Game Over')
+    $('#message').text('Game Over: Tie!')
+    return true
+  } else {
+    store.over = false
+    return false
+  }
+}
 /* const winningCombs = [
   [0, 1, 2], // horiztonal
   [0, 4, 8], // diagonal
@@ -18,25 +43,6 @@ function setMessage (msg) {
   document.getElementByID('message').innerText = msg
 }
 */
-let currentPlayer = 'X'
-const gameBoard = ['', '', '', '', '', '', '', '', '']
-
-// Switch Players
-const onBoxClick = (event) => {
-  if (currentPlayer === 'X') {
-    currentPlayer = 'O'
-    ui.onPlayerXTurn()
-  } else {
-    currentPlayer = 'X'
-    ui.onPlayerOTurn()
-  }
-  const text = $(event.target).text()
-  if (text === '') {
-    $(event.target).text(currentPlayer)
-  } else if (text !== '') {
-    ui.onInvalidMove()
-  }
-}
 
 /* function checkForWinner (move) {
   let result = false
@@ -66,5 +72,6 @@ function getBox (number) {
 } */
 
 module.exports = {
-  onBoxClick
+  gameBoard,
+  checkForWin
 }

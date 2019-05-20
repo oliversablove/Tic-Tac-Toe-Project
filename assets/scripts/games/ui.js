@@ -47,6 +47,7 @@ const onGameCountSuccess = data => {
   $('#game-count-msg').text('')
   data.games.forEach(game => {
     $('#game-count-msg').text(`${data.games.length}`)
+    $('#message').text(`You have played a total of ${data.games.length} games of Tic Tac Toe!`)
   })
 }
 

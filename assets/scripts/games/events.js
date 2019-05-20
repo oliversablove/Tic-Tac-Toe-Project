@@ -32,7 +32,16 @@ const onUpdateGame = event => {
   }
 }
 
+const onGameCount = event => {
+  event.preventDefault()
+
+  api.gameCount()
+    .then(ui.onGameCountSuccess)
+    .catch(ui.onGameCountFailure)
+}
+
 module.exports = {
   onNewGame,
-  onUpdateGame
+  onUpdateGame,
+  onGameCount
 }

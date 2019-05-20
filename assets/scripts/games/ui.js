@@ -32,20 +32,33 @@ const onUpdateGameSuccess = (playerTurn, cell) => {
 
   } else if (store.player === 'x') {
     store.player = 'o'
-    $('#message').text(`Player ${store.player}'s turn'`)
+    $('#message').text(`Player ${store.player}'s turn`)
   } else {
     store.player = 'x'
-    $('#message').text(`Player ${store.player}'s turn'`)
+    $('#message').text(`Player ${store.player}'s turn`)
   }
 }
 
-const onUpdateGameFailure = responseData => {
-  console.log('failure')
+const onUpdateGameFailure = data => {
+  $('#message').text('Error: Could not make move.')
+}
+
+const onGameCountSuccess = data => {
+  $('#game-count-msg').text('')
+  data.games.forEach(game => {
+    $('#game-count-msg').text(`${data.games.length}`)
+  })
+}
+
+const onGameCountFailure = () => {
+  $('#message').text('Could not retrive game count.')
 }
 
 module.exports = {
   onNewGameFailure,
   onNewGameSuccess,
   onUpdateGameFailure,
-  onUpdateGameSuccess
+  onUpdateGameSuccess,
+  onGameCountSuccess,
+  onGameCountFailure
 }

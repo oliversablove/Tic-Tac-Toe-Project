@@ -33,7 +33,17 @@ const updateGame = (index, value, over) => {
   })
 }
 
+const gameCount = () => {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   newGame,
-  updateGame
+  updateGame,
+  gameCount
 }

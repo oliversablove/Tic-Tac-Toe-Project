@@ -7,6 +7,10 @@ body {
   margin-top: 10px;
 }
 
+h1 {
+  text-align: center;
+}
+
 .box {
   align-items: center;
   background-color: $secondary;
@@ -17,11 +21,22 @@ body {
   justify-content: center;
 }
 
-
 .box:hover {
   opacity: .5;
   }
 
 .row {
   justify-content: center;
+}
+
+.container,
+#signOut,
+#changePW,
+#newGame,
+#gameCount {
+  display: none;
+}
+
+#message {
+  text-align: center;
 }

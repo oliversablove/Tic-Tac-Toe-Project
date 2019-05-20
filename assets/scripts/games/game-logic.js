@@ -15,12 +15,10 @@ const checkForWin = gameBoard => {
       (gameBoard[0] && gameBoard[0] === gameBoard[4] && gameBoard[0] === gameBoard[8]) ||
       (gameBoard[2] && gameBoard[2] === gameBoard[4] && gameBoard[2] === gameBoard[6])) {
     store.over = true
-    console.log('Game is over')
     $('#message').text(`Game Over: Player ${store.player} wins!`)
     return true
   } else if (store.turn === 9) {
     store.over = true
-    console.log('Game Over')
     $('#message').text('Game Over: Tie!')
     return true
   } else {

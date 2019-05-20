@@ -3,8 +3,9 @@
 const store = require('../store.js')
 const gameLogic = require('./game-logic') // make sure this is correctly linked.
 
-const onNewGameSuccess = (data) => {
-  console.log(data, store)
+const onNewGameSuccess = data => {
+  $('.container').show()
+  $('#gameCount').show()
   $('#message').text('New Game Started!')
   store.turn = 1
   store.gameID = data.game.id
@@ -14,12 +15,11 @@ const onNewGameSuccess = (data) => {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('.box').text('')
-  $('#message').text(`Player ${store.player}'s turn'`)
+  $('#message').text(`Player ${store.player}'s Turn`)
 }
 
-const onNewGameFailure = () => {
-  console.log('failure')
-  $('#message').text('Error: Could not start game.')
+const onNewGameFailure = data => {
+  $('#message').text('Error: Could not Start Game.')
   $('#message').removeClass()
   $('#message').addClass('failure')
 }
@@ -27,7 +27,6 @@ const onUpdateGameSuccess = (playerTurn, cell) => {
   $(cell).text(`${store.player}`)
   gameLogic.gameBoard[store.id] = store.player
   store.cells = gameLogic.gameBoard
-  console.log(store)
   if (gameLogic.checkForWin(gameLogic.gameBoard)) {
 
   } else if (store.player === 'X') {
@@ -40,19 +39,18 @@ const onUpdateGameSuccess = (playerTurn, cell) => {
 }
 
 const onUpdateGameFailure = data => {
-  $('#message').text('Error: Could not make move.')
+  $('#message').text('Error: Could not Make Move.')
 }
 
 const onGameCountSuccess = data => {
   $('#game-count-msg').text('')
   data.games.forEach(game => {
-    $('#game-count-msg').text(`${data.games.length}`)
     $('#message').text(`You have played a total of ${data.games.length} games of Tic Tac Toe!`)
   })
 }
 
 const onGameCountFailure = () => {
-  $('#message').text('Could not retrive game count.')
+  $('#message').text('Error: Could not Retrive Game Count.')
 }
 
 module.exports = {

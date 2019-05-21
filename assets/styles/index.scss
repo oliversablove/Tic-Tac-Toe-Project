@@ -2,6 +2,10 @@
 
 $font-color: $light;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   margin-top: 10px;
@@ -25,6 +29,13 @@ h1 {
   opacity: .5;
   }
 
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  height: 72vh;
+  width: 72vh;
+}
+
 .row {
   justify-content: center;
 }
@@ -39,4 +50,8 @@ h1 {
 
 #message {
   text-align: center;
+}
+
+#gameCount {
+  margin: 20px 0;
 }

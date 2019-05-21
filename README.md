@@ -16,16 +16,16 @@ Problem Solving Strategy:
 Every time I encountered problems I would try to break them down to solvable problems. As new programmer, I researched plenty to solve problems.
 
 Technologies Used:
--HTML
--CSS, SASS & Bootstrap
--JavaScript & jQuery
--AJAX
+1. HTML
+2. CSS, SASS & Bootstrap
+3. JavaScript & jQuery
+4. AJAX
 
 Link to Project Wireframe:
 https://imgur.com/sh0yg8i
 
 User Stories:
--As a user, I want a tic tac toe gamn that stands out from the standard game so that it is actually entertaining to play.
--As a modern technology user, I want a game that is visually appealing and user-friendly so it is up to par.
--As a gamer, I want a game that runs the way it is intuitively intended to so I don't get frustrated playing it.
--As an employer, I want to be impressed by a visually appealing interface and functionality that proves the creator understands how to build single page applications.
+1. As a user, I want a tic tac toe gamn that stands out from the standard game so that it is actually entertaining to play.
+2. As a modern technology user, I want a game that is visually appealing and user-friendly so it is up to par.
+3. As a gamer, I want a game that runs the way it is intuitively intended to so I don't get frustrated playing it.
+4. As an employer, I want to be impressed by a visually appealing interface and functionality that proves the creator understands how to build single page applications.

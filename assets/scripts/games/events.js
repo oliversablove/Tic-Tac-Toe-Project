@@ -28,7 +28,7 @@ const onUpdateGame = event => {
       .catch(ui.onUpdateGameFailure)
     store.turn++
   } else {
-    $('#message'.text('Game is over.'))
+    $('#message').text('Game is already over. Press New Game to restart!')
   }
 }
 

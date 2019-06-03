@@ -2,7 +2,7 @@
 This is a tic-tac-toe game I built as my first project for General Assembly's Software Engineering Immersive program. It is a single-page application with working user authentication using GA's project API.
 
 I built the front-end for the application, including the game logic, authentication, and User Interface.
-This project is currently in its first version, and will be extensively updated using CSS and SASS to create a truly user-friendly, aesthetically appealing, and entertaining application.
+This project is currently in its first version, and will be extensively updated.
 
 Project Development Process:
 1. Build User Authentication testing with curl scripts
@@ -14,6 +14,11 @@ Project Development Process:
 
 Problem Solving Strategy:
 Every time I encountered problems I would try to break them down to solvable problems. As new programmer, I researched plenty to solve problems.
+
+Problems to Fix/Long-term Goals:
+1. Right now, this application is barebones and lacks aesthetic content. In future versions, I aim to use CSS and SASS to create a truly user-friendly, aesthetically appealing, and entertaining application.
+2. I hope to add Two-Player functionality.
+3. As a reach goal, I would like to add intuitive AI, and as a far reach goal, AI with several difficulties.
 
 Technologies Used:
 1. HTML
